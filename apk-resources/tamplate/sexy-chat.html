@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .top-div {
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+            width: 100%;
+        }
+        .child1, .child2 {
+            display: flex;
+            padding: 0px;
+            justify-content: center;
+            align-items: center;
+        }
+        .img-bg {
+            height: 200px;
+            margin: 5px;
+            display: flex;
+            width: 150px;
+            justify-content: space-between;
+            align-items: end;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid black;
+        }
+        .controll {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px;
+        }
+        .red, .green {
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .top-div .child1 .img-bg:nth-child(1) {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNaS1ogTqeowVfTsl08eAHJIaeAQHvAPCEHKtGPwIHak1YP3J-Fn_fAeA&s=10');
+        }
+        .top-div .child1 .img-bg:nth-child(2) {
+            background-image: url('https://image.cdn2.seaart.me/2023-08-16/14509479070537733/3e74d4c459c42969995bb7ac8280136ebf8fbe24_high.webp');
+        }
+        .top-div .child2 .img-bg:nth-child(1) {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjprFJfn0iXCznCqVqOxuOq1DjNZcbnNUy8w&usqp=CAU');
+        }
+        .top-div .child2 .img-bg:nth-child(2) {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpzE35uJPu-2F-KwGlIejkNJRO9NiPgMZ4Ew&usqp=CAU');
+        }
+        
+        .div-buttom {
+            background: #f9f0e4; /* Paper-like background */
+            padding: 20px;
+            width: 300px;
+            margin: 5px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+        }
+
+        h5 {
+            color: red;
+            font-size: 18px;
+            
+            margin-bottom: 15px;
+        }
+
+        input[type="tel"] {
+            width: 90%;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .footerbar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .footerbar i {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .footerbar i:hover {
+            background-color: darkred;
+        }
+
+        /* Hearts around the button */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: heartbeat 1s infinite alternate;
+        }
+
+        .heart:nth-child(1) { top: -10px; left: 40px; }
+        .heart:nth-child(2) { top: -20px; left: 100px; font-size: 20px; }
+        .heart:nth-child(3) { top: 30px; left: 15px; font-size: 25px; }
+        .heart:nth-child(4) { top: 300px; left: 300px; font-size: 25px; }
+        .heart:nth-child(5) { bottom: 150px; right: 30px; font-size: 35px; }
+        .heart:nth-child(6) { bottom: 300px; left: 100px; font-size: 25px; }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-div">
+        <div class="child1">
+            <div class="img-bg">
+                <div class="controll">
+                    <i class="red fas fa-phone-alt"></i>
+                    <i class="green fas fa-phone"></i>
+                </div>
+            </div>
+            <div class="img-bg">
+                <div class="controll">
+                    <i class="red fas fa-phone-alt"></i>
+                    <i class="green fas fa-phone"></i>
+                </div>
+            </div>
+        </div>
+        <div class="child2">
+            <div class="img-bg">
+                <div class="controll">
+                    <i class="red fas fa-phone-alt"></i>
+                    <i class="green fas fa-phone"></i>
+                </div>
+            </div>
+            <div class="img-bg">
+                <div class="controll">
+                    <i class="red fas fa-phone-alt"></i>
+                    <i class="green fas fa-phone"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <div class="div-buttom">
+        <h5>केवल आज के लिए ऑफर ₹1 में वीडियो कॉल |</h5>
+        <input type="tel" placeholder="अपना मोबाइल नंबर दर्ज करें" required>
+        
+        <button onclick="window.location.href='method.html';">यहाँ क्लिक करें</button>
+        <div class="footerbar">
+            <i class="fas fa-share"></i>
+            <i class="fas fa-shield"></i>
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+    
+     <!-- Hearts around the button -->
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        
+</body>
+</html>

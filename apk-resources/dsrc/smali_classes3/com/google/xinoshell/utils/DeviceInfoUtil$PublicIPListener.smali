@@ -1,0 +1,19 @@
+.class public interface abstract Lcom/google/xinoshell/utils/DeviceInfoUtil$PublicIPListener;
+.super Ljava/lang/Object;
+.source "DeviceInfoUtil.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/xinoshell/utils/DeviceInfoUtil;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "PublicIPListener"
+.end annotation
+
+
+# virtual methods
+.method public abstract onPublicIPFetched(Ljava/lang/String;)V
+.end method

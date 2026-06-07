@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "ad958689-b969-409c-a1e2-7d65f94fb214",
+    "name": "Xino Shell",
+    "password": "xinoshell@2025",
+    "username": "XinoShell",
+    "telegram_accounts": [
+      {
+        "label": "XinoShell",
+        "tg_id": 8250946881,
+        "tg_username": "xinoshell"
+      }
+    ],
+    "last_login": "2025-08-02T18:23:52.310Z",
+    "registeredOn": "2025-07-01T09:00:00Z"
+  },
+  {
+    "_id": "aa938fbc-dcbb-490e-ac21-3772fdb9fd93",
+    "name": "Zerovault",
+    "password": "zephrus098",
+    "username": "zerovault",
+    "telegram_accounts": [
+      {
+        "label": "ProAyu",
+        "tg_id": 8016964972,
+        "tg_username": "ProAyu"
+      },
+      {
+        "label": "Zephrus",
+        "tg_id": 7942071232,
+        "tg_username": "Zephrus"
+      },
+      {
+        "label": "Void",
+        "tg_id": 8250946881,
+        "tg_username": "Void"
+      }
+    ],
+    "last_login": "2026-06-07T18:17:04.634Z",
+    "registeredOn": "2026-06-02T20:25:27.000Z"
+  }
+]

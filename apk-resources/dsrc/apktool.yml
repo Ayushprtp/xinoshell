@@ -1,0 +1,41 @@
+version: 2.12.0
+apkFileName: app-debug.apk
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: 26
+  targetSdkVersion: 35
+packageInfo:
+  forcedPackageId: 127
+versionInfo:
+  versionCode: 1
+  versionName: 1.0
+doNotCompress:
+- arsc
+- jpg
+- png
+- so
+- META-INF/androidx.activity_activity.version
+- META-INF/androidx.arch.core_core-runtime.version
+- META-INF/androidx.core_core.version
+- META-INF/androidx.customview_customview.version
+- META-INF/androidx.datastore_datastore-core.version
+- META-INF/androidx.datastore_datastore-preferences.version
+- META-INF/androidx.datastore_datastore.version
+- META-INF/androidx.documentfile_documentfile.version
+- META-INF/androidx.fragment_fragment.version
+- META-INF/androidx.legacy_legacy-support-core-utils.version
+- META-INF/androidx.lifecycle_lifecycle-livedata-core.version
+- META-INF/androidx.lifecycle_lifecycle-livedata.version
+- META-INF/androidx.lifecycle_lifecycle-runtime.version
+- META-INF/androidx.lifecycle_lifecycle-viewmodel.version
+- META-INF/androidx.loader_loader.version
+- META-INF/androidx.localbroadcastmanager_localbroadcastmanager.version
+- META-INF/androidx.print_print.version
+- META-INF/androidx.savedstate_savedstate.version
+- META-INF/androidx.versionedparcelable_versionedparcelable.version
+- META-INF/androidx.viewpager_viewpager.version
+- META-INF/kotlinx_coroutines_core.version
+- META-INF/kotlinx_coroutines_play_services.version
+- okhttp3/internal/publicsuffix/publicsuffixes.gz

