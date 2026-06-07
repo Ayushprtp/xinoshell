@@ -53,6 +53,7 @@ Private control panel for the **securityguard** Android remote-management app. B
 ├── public/                      # Static assets
 ├── scripts/                     # Helper scripts
 ├── admin.json                   # Admin credentials (see Security)
+├── firebase_service_account.json # FCM service-account key (see Configuration)
 └── .env                         # Environment variables (see Configuration)
 ```
 
@@ -67,6 +68,7 @@ npm install
 # 2. Configure
 cp .env.example .env   # then fill in MONGODB_URI, TELEGRAM_BOT_TOKEN, JWT_SECRET, ...
 # Also create admin.json with at least one admin entry (see admin.json.example if present)
+# And place firebase_service_account.json at the project root (see Configuration section)
 
 # 3. Database
 npx prisma generate
@@ -125,6 +127,34 @@ All configuration is environment-driven via `.env`. Required variables:
 
 Each admin can have multiple `telegram_accounts`. The login flow shows a radio selector; OTPs are locked to the chosen account.
 
+### `firebase_service_account.json`
+
+Firebase Cloud Messaging is used for push notifications to installed devices. The service-account JSON authenticates the panel's server-side calls to the FCM HTTP v1 API.
+
+1. Open the Firebase console → **Project settings** → **Service accounts**.
+2. Click **Generate new private key** — this downloads a JSON file.
+3. Save it as `firebase_service_account.json` at the project root (next to `.env`).
+4. The file must contain, at minimum:
+
+```json
+{
+  "type": "service_account",
+  "project_id": "your-firebase-project-id",
+  "private_key_id": "...",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-...@your-project.iam.gserviceaccount.com",
+  "client_id": "...",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "..."
+}
+```
+
+The file is loaded lazily by `src/app/api/fcm-ping/route.ts` (Firebase Admin SDK is initialized on first request to that endpoint via `admin.initializeApp({ credential: admin.credential.cert(serviceAccount) })`). The panel uses it to mint short-lived OAuth2 tokens and send FCM messages to device registration tokens.
+
+**Treat this file as a secret.** It grants project-level Firebase access. Rotate by generating a new key in the Firebase console and replacing the file.
+
 ---
 
 ## Admin login flow (Telegram 2FA)
@@ -162,6 +192,7 @@ Each admin can have multiple `telegram_accounts`. The login flow shows a radio s
 - `tg_id` is never sent to the client (the login flow uses opaque `login_token`s).
 - OTPs are 6 digits, 2-minute TTL, single-use. No rate limiting on the login endpoints (a known gap — fix before public exposure).
 - `.env` contains the Telegram bot token, JWT secret, MongoDB URI, and FCM credentials. **Do not commit `.env` to a public repo.**
+- `firebase_service_account.json` holds the FCM service-account private key. Same rule: never to a public repo. Rotate by re-generating in the Firebase console.
 
 ---
 
